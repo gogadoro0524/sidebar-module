@@ -1,0 +1,20 @@
+# Example app - not published to npm
+example/
+quick-start.sh
+
+# Source files (only dist is published)
+src/
+*.ts
+*.tsx
+!*.d.ts
+
+# Config files
+tsconfig.json
+tsup.config.ts
+tailwind.config.js
+postcss.config.js
+
+# Development
+.gitignore
+*.log
+.DS_Store
