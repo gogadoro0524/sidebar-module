@@ -107,6 +107,89 @@ const customData = {
 <AppSidebar data={customData} />
 ```
 
+## Advanced Customization
+
+### 🎨 CSS Variables Theming
+
+Customize colors by overriding CSS variables in your global stylesheet:
+
+```css
+/* Light theme */
+:root {
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
+}
+
+/* Dark theme */
+.dark {
+  --sidebar-background: 240 5.9% 10%;
+  --sidebar-foreground: 240 4.8% 95.9%;
+  --sidebar-primary: 0 0% 98%;
+  --sidebar-primary-foreground: 240 5.9% 10%;
+  --sidebar-accent: 240 3.7% 15.9%;
+  --sidebar-accent-foreground: 240 4.8% 95.9%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
+}
+```
+
+### 🧩 Individual Components
+
+Use individual components for maximum flexibility:
+
+```tsx
+import {
+  SidebarProvider,
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+  SidebarFooter,
+  NavMain,
+  TeamSwitcher,
+  NavUser
+} from '@gogadoro/sidebar-module'
+
+function CustomSidebar() {
+  return (
+    <SidebarProvider>
+      <Sidebar>
+        <SidebarHeader>
+          <TeamSwitcher teams={myTeams} />
+          {/* Add your custom header components */}
+        </SidebarHeader>
+
+        <SidebarContent>
+          <NavMain items={myNavItems} />
+          {/* Add your custom navigation sections */}
+          <MyCustomSection />
+        </SidebarContent>
+
+        <SidebarFooter>
+          <NavUser user={myUser} />
+        </SidebarFooter>
+      </Sidebar>
+    </SidebarProvider>
+  )
+}
+```
+
+### 🎯 Tailwind CSS Classes
+
+Override styles with Tailwind classes:
+
+```tsx
+<AppSidebar
+  className="bg-slate-900 border-slate-700"
+  data={customData}
+/>
+```
+
 ## Theming
 
 Add these CSS variables to your global styles:
@@ -204,6 +287,59 @@ npm run lint
 # Format code
 npm run format
 ```
+
+## API Reference
+
+### SidebarData Interface
+
+```tsx
+interface SidebarData {
+  user: {
+    name: string
+    email: string
+    avatar: string
+  }
+  teams: Array<{
+    name: string
+    logo: LucideIcon
+    plan: string
+  }>
+  navMain: Array<{
+    title: string
+    url: string
+    icon?: LucideIcon
+    isActive?: boolean
+    items?: Array<{
+      title: string
+      url: string
+    }>
+  }>
+  navSecondary: Array<{
+    title: string
+    url: string
+    icon: LucideIcon
+  }>
+  projects: Array<{
+    name: string
+    url: string
+    icon: LucideIcon
+  }>
+}
+```
+
+### AppSidebar Props
+
+```tsx
+interface AppSidebarProps {
+  data?: SidebarData  // Custom data (optional)
+  className?: string  // Additional CSS classes
+  // ...all standard HTML aside element props
+}
+```
+
+## Live Demo
+
+🌐 **Try it live:** [https://gogadoro-sidebar-demo.vercel.app](https://gogadoro-sidebar-demo.vercel.app)
 
 ## Browser Support
 
