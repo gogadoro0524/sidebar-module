@@ -12,6 +12,10 @@ A highly customizable, production-ready sidebar component for React applications
 - **Accessible** - Built with Radix UI for accessibility
 - **Modern Stack** - React 18, Tailwind CSS, Radix UI
 
+## Preview
+
+![Sidebar Module Demo](https://raw.githubusercontent.com/gogadoro0524/sidebar-module/main/.github/assets/team-switcher-modal.png)
+
 ## Installation
 
 ```bash
